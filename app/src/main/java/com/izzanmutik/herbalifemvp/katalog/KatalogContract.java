@@ -14,14 +14,14 @@ import java.util.List;
 
 public interface KatalogContract {
 
-    public interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
 
         void showKatalog(List<Katalog> katalogList);
 
         void showDetailKatalog(long id);
     }
 
-    public interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
 
         void loadKatalog();
 

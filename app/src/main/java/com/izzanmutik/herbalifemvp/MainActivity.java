@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.izzanmutik.herbalifemvp.katalog.KatalogFragment;
+import com.izzanmutik.herbalifemvp.penyakit.PenyakitFragment;
 
 import java.util.ArrayList;
 import java.util.List;

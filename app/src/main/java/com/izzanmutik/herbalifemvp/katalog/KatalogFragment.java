@@ -49,12 +49,13 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAdapter = new KatalogAdapter(new ArrayList<Katalog>(0), mItemListener);
+        mPresenter = new KatalogPresenter(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        //mPresenter.start();
+        mPresenter.start();
     }
 
     public void setPresenter(KatalogContract.Presenter presenter) {
@@ -80,7 +81,6 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        mPresenter.start();
         // Inflate the layout for this fragment
         return view;
     }
@@ -170,7 +170,7 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
             public MyViewHolder(View itemView) {
                 super(itemView);
                 nama = (TextView) itemView.findViewById(R.id.rowKatalog_textViewNama);
-                letterIcon = (ImageView) itemView.findViewById(R.id.rowKatalog_imageView);
+                letterIcon = (ImageView) itemView.findViewById(R.id.rowPenyakit_imageView);
 
             }
 
