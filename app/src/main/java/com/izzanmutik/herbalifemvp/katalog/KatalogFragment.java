@@ -67,12 +67,10 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_katalog, container, false);
 
         // Set up katalog view
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.katalog_recyclerView);
-        mRecyclerView.setHasFixedSize(false);
-
         mRecyclerView = (RecyclerView) view.findViewById(R.id.katalog_recyclerView);
         mRecyclerView.setHasFixedSize(false);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
@@ -81,7 +79,6 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        // Inflate the layout for this fragment
         return view;
     }
 

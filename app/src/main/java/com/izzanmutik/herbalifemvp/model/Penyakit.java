@@ -84,4 +84,6 @@ public class Penyakit extends Model {
                 .orderBy("RANDOM()")
                 .executeSingle();
     }
+
+
 }

@@ -16,7 +16,7 @@ public interface PenyakitContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showPenyakitList(List<Penyakit> katalogList);
+        void showPenyakitList(List<Penyakit> penyakitList);
 
         void showDetailPenyakit(long id);
     }
