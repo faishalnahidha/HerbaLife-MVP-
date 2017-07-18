@@ -1,7 +1,11 @@
 package com.izzanmutik.herbalifemvp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.izzanmutik.herbalifemvp.cariPenyakit.CariPenyakitActivity;
 import com.izzanmutik.herbalifemvp.katalog.KatalogFragment;
 import com.izzanmutik.herbalifemvp.penyakit.PenyakitFragment;
 
@@ -27,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     public PenyakitFragment mPenyakitFragment;
 
     public CoordinatorLayout mCoordinatorLayout;
+
+    public FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        fab = (FloatingActionButton) findViewById(R.id.fabSearch);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CariPenyakitActivity.class);
+                startActivity(intent);
             }
+        });
+    }
 
 
     @Override
@@ -64,7 +81,34 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_help) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Herbal Life adalah "
+                    + "aplikasi berbasis android "
+                    + "yang berisi cara pengobatan penyakit "
+                    + "terutama menggunakan tumbuhan herbal\n\n"
+                    + "Menu Search:\n"
+                    + "Digunakan untuk mencari jenis "
+                    + "penyakit sesuai dengan keyword yang dimasukkan\n\n"
+                    + "Menu Katalog:\n"
+                    + "Berisi seluruh daftar tumbuhan "
+                    + "yang bisa digunakan sebagai obat\n\n"
+                    + "HerbaLife v2.0.0")
+                    .setCancelable(false)
+                    .setPositiveButton("THANK YOU",new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog,int id)
+                        {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog judul = builder.create();
+            judul.setIcon(R.mipmap.ic_launcher_round);
+            judul.setTitle("Help");
+            judul.show();
+            return true;
+        } else if (id == R.id.action_exit){
+            finish();
             return true;
         }
 
@@ -76,6 +120,16 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(mKatalogFragment, "KATALOG");
         adapter.addFragment(mPenyakitFragment, "PENYAKIT");
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 0) {
+                    fab.hide();
+                } else {
+                    fab.show();
+                }
+            }
+        });
     }
 
     public class ViewPagerAdapter extends FragmentPagerAdapter {

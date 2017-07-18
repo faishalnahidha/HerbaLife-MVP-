@@ -1,12 +1,14 @@
 package com.izzanmutik.herbalifemvp.penyakit;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.izzanmutik.herbalifemvp.R;
+import com.izzanmutik.herbalifemvp.detailPenyakit.DetailPenyakitActivity;
 import com.izzanmutik.herbalifemvp.model.Penyakit;
 import com.izzanmutik.herbalifemvp.other.DividerItemDecoration;
 
@@ -82,6 +85,7 @@ public class PenyakitFragment extends Fragment implements PenyakitContract.View 
         public void onClick(View view, int position) {
             Penyakit mPenyakit= mAdapter.getItem(position);
             mPresenter.openDetailPenyakit(mPenyakit);
+            Log.i("PENYAKIT_POSITION", String.valueOf(position));
         }
     };
 
@@ -91,8 +95,11 @@ public class PenyakitFragment extends Fragment implements PenyakitContract.View 
     }
 
     @Override
-    public void showDetailPenyakit(long id) {
-
+    public void showDetailPenyakit(long id, String nama) {
+        Intent intent = new Intent(getActivity(), DetailPenyakitActivity.class);
+        intent.putExtra("PENYAKIT_ID", id);
+        intent.putExtra("NAMA_PENYAKIT", nama);
+        startActivity(intent);
     }
 
     @Override
@@ -165,6 +172,7 @@ public class PenyakitFragment extends Fragment implements PenyakitContract.View 
                 nama = (TextView) itemView.findViewById(R.id.rowPenyakit_textViewNama);
                 letterIcon = (ImageView) itemView.findViewById(R.id.rowPenyakit_imageView);
 
+                itemView.setOnClickListener(this);
             }
 
             @Override

@@ -19,18 +19,28 @@
         <meta-data
             android:name="AA_MODELS"
             android:value="com.izzanmutik.herbalifemvp.model.Katalog, com.izzanmutik.herbalifemvp.model.Penyakit" />
-
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".detailKatalog.DetailKatalogActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".detailKatalog.DetailKatalogActivity" />
+        <activity android:name=".detailPenyakit.DetailPenyakitActivity" />
+        <activity android:name=".cariPenyakit.CariPenyakitActivity" />
+
     </application>
 
 </manifest>

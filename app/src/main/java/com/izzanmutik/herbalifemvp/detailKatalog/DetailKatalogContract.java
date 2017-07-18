@@ -20,6 +20,5 @@ public interface DetailKatalogContract {
 
         void loadKatalog(long id);
 
-
     }
 }

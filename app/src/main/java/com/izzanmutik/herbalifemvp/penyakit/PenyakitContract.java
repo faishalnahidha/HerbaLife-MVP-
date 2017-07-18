@@ -18,7 +18,7 @@ public interface PenyakitContract {
 
         void showPenyakitList(List<Penyakit> penyakitList);
 
-        void showDetailPenyakit(long id);
+        void showDetailPenyakit(long id, String nama);
     }
 
     interface Presenter extends BasePresenter {

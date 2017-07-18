@@ -93,7 +93,7 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
         public void onClick(View view, int position) {
             Katalog mKatalog = mAdapter.getItem(position);
             mPresenter.openDetailKatalog(mKatalog);
-            Log.d("ADAPTER_POSITION", String.valueOf(position));
+            Log.i("KATALOG_POSITION", String.valueOf(position));
         }
     };
 

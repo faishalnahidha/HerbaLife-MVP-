@@ -45,6 +45,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:tint="@color/colorIcons"
+        android:visibility="gone"
         app:elevation="6dp"
         app:layout_anchor="@id/container"
         app:layout_anchorGravity="bottom|right|end"

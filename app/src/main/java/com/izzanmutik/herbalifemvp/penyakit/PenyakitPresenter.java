@@ -29,7 +29,7 @@ public class PenyakitPresenter implements PenyakitContract.Presenter{
 
     @Override
     public void openDetailPenyakit(@NonNull Penyakit penyakit) {
-        mPenyakitView.showDetailPenyakit(penyakit.getPenyakitId());
+        mPenyakitView.showDetailPenyakit(penyakit.getPenyakitId(), penyakit.getNama());
     }
 
     @Override

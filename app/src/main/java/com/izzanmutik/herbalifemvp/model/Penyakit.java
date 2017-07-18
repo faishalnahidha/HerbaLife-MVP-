@@ -85,5 +85,10 @@ public class Penyakit extends Model {
                 .executeSingle();
     }
 
-
+    public static Penyakit getByNama(String namaPenyakit) {
+        return new Select()
+                .from(Penyakit.class)
+                .where("Nama = ?", namaPenyakit)
+                .executeSingle();
+    }
 }
