@@ -18,7 +18,7 @@ public interface KatalogContract {
 
         void showKatalog(List<Katalog> katalogList);
 
-        void showDetailKatalog(long id);
+        void showDetailKatalog(long id, String nama);
     }
 
     interface Presenter extends BasePresenter {

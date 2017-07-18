@@ -29,7 +29,7 @@ public class KatalogPresenter implements KatalogContract.Presenter {
 
     @Override
     public void openDetailKatalog(@NonNull Katalog katalog) {
-        mKatalogView.showDetailKatalog(katalog.getTumbuhanId());
+        mKatalogView.showDetailKatalog(katalog.getTumbuhanId(), katalog.getNama());
     }
 
     @Override

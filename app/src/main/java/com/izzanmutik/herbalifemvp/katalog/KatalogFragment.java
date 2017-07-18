@@ -1,12 +1,14 @@
 package com.izzanmutik.herbalifemvp.katalog;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.izzanmutik.herbalifemvp.R;
+import com.izzanmutik.herbalifemvp.detailKatalog.DetailKatalogActivity;
 import com.izzanmutik.herbalifemvp.model.Katalog;
 import com.izzanmutik.herbalifemvp.other.DividerItemDecoration;
 
@@ -90,6 +93,7 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
         public void onClick(View view, int position) {
             Katalog mKatalog = mAdapter.getItem(position);
             mPresenter.openDetailKatalog(mKatalog);
+            Log.d("ADAPTER_POSITION", String.valueOf(position));
         }
     };
 
@@ -99,8 +103,11 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
     }
 
     @Override
-    public void showDetailKatalog(long id) {
-
+    public void showDetailKatalog(long id, String nama) {
+        Intent intent = new Intent(getActivity(), DetailKatalogActivity.class);
+        intent.putExtra("TUMBUHAN_ID", id);
+        intent.putExtra("NAMA_TUMBUHAN", nama);
+        startActivity(intent);
     }
 
     public static class KatalogAdapter
@@ -116,12 +123,12 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
             this.mItemListener = itemListener;
         }
 
-        public void replaceData(List<Katalog> katalogList){
+        public void replaceData(List<Katalog> katalogList) {
             setList(katalogList);
             notifyDataSetChanged();
         }
 
-        private void setList(List<Katalog> katalogList){
+        private void setList(List<Katalog> katalogList) {
             mKatalogList = katalogList;
         }
 
@@ -159,7 +166,7 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
         }
 
         public class MyViewHolder extends RecyclerView.ViewHolder
-        implements View.OnClickListener{
+                implements View.OnClickListener {
 
             public TextView nama;
             public ImageView letterIcon;
@@ -169,6 +176,7 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
                 nama = (TextView) itemView.findViewById(R.id.rowKatalog_textViewNama);
                 letterIcon = (ImageView) itemView.findViewById(R.id.rowPenyakit_imageView);
 
+                itemView.setOnClickListener(this);
             }
 
             @Override
@@ -180,7 +188,6 @@ public class KatalogFragment extends Fragment implements KatalogContract.View {
     }
 
     public interface KatalogItemListener {
-
         void onClick(View view, int position);
     }
 }

@@ -19,6 +19,7 @@
         <meta-data
             android:name="AA_MODELS"
             android:value="com.izzanmutik.herbalifemvp.model.Katalog, com.izzanmutik.herbalifemvp.model.Penyakit" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -29,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".detailKatalog.DetailKatalogActivity"></activity>
     </application>
 
 </manifest>
