@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_help) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Herbal Life adalah "
-                    + "aplikasi berbasis android "
+                    + "aplikasi berbasis Android "
                     + "yang berisi cara pengobatan penyakit "
                     + "terutama menggunakan tumbuhan herbal\n\n"
                     + "Menu Search:\n"
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     + "Menu Katalog:\n"
                     + "Berisi seluruh daftar tumbuhan "
                     + "yang bisa digunakan sebagai obat\n\n"
-                    + "HerbaLife v2.0.0")
+                    + "HerbaLife v2.0.1")
                     .setCancelable(false)
                     .setPositiveButton("THANK YOU",new DialogInterface.OnClickListener()
                     {
